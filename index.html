@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Happy Rose Day 🌹</title>
+<title>For You 🌹</title>
 
 <style>
-/* ===== RESET ===== */
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
@@ -16,115 +15,119 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: 'Poppins', system-ui, sans-serif;
-  background: linear-gradient(180deg, #fff1f4, #ffe4ea);
+  background: linear-gradient(180deg, #fff3f7, #ffe1ea);
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #c94a6a;
+  color: #c44a6a;
   overflow-x: hidden;
 }
 
-/* ===== CONTAINER ===== */
+/* Main container */
 .container {
   width: 100%;
   max-width: 420px;
-  padding: 28px 22px 40px;
+  padding: 26px 22px 48px;
   text-align: center;
   position: relative;
 }
 
-/* ===== FLOATING HEARTS ===== */
-.heart {
+/* Floating ambient elements */
+.float {
   position: fixed;
-  font-size: 18px;
-  animation: floatUp 10s linear infinite;
-  opacity: 0.35;
+  font-size: 15px;
+  opacity: 0.25;
+  animation: rise linear infinite;
 }
 
-@keyframes floatUp {
-  from { transform: translateY(100vh); }
+@keyframes rise {
+  from { transform: translateY(110vh); }
   to { transform: translateY(-120px); }
 }
 
-/* ===== HERO ===== */
+/* Header */
 .rose {
   font-size: 64px;
-  animation: gentleFloat 3s ease-in-out infinite;
+  margin-bottom: 8px;
+  animation: sway 3s ease-in-out infinite;
+  cursor: pointer;
 }
 
-@keyframes gentleFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+@keyframes sway {
+  0%,100% { transform: rotate(0deg); }
+  50% { transform: rotate(4deg); }
 }
 
 h1 {
-  font-size: 2rem;
-  margin: 14px 0 8px;
+  font-size: 1.9rem;
+  margin: 8px 0;
 }
 
 .subtitle {
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   line-height: 1.6;
-  margin-bottom: 22px;
+  opacity: 0.9;
+  margin-bottom: 24px;
 }
 
-/* ===== BUTTON ===== */
+/* Button */
 button {
   border: none;
-  background: #ff6f91;
+  background: linear-gradient(135deg, #ff7a9c, #ff5f85);
   color: white;
-  padding: 14px 28px;
+  padding: 14px 32px;
   border-radius: 999px;
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 12px 30px rgba(255, 111, 145, 0.4);
+  box-shadow: 0 14px 32px rgba(255, 95, 133, 0.45);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:active {
   transform: scale(0.94);
-  box-shadow: 0 6px 18px rgba(255, 111, 145, 0.35);
+  box-shadow: 0 8px 20px rgba(255, 95, 133, 0.35);
 }
 
-/* ===== CARDS ===== */
-.card {
+/* Sections */
+.section {
   background: white;
   border-radius: 24px;
-  padding: 26px 22px;
+  padding: 24px 22px;
   margin-top: 26px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 18px 42px rgba(0,0,0,0.08);
   display: none;
   animation: fadeUp 0.6s ease forwards;
 }
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.card p {
+.section p {
   font-size: 1.05rem;
   line-height: 1.75;
   margin: 0;
 }
 
-/* ===== FINAL TEXT ===== */
+/* Soft thoughts */
+.thought {
+  font-size: 0.95rem;
+  opacity: 0.7;
+  margin-top: 18px;
+}
+
+/* Ending */
 .end {
   margin-top: 30px;
   font-size: 0.95rem;
-  opacity: 0.7;
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
 
-/* ===== SMALL SCREEN TWEAK ===== */
+/* Small screens */
 @media (max-width: 360px) {
-  h1 { font-size: 1.8rem; }
-  .subtitle { font-size: 1rem; }
+  h1 { font-size: 1.75rem; }
 }
 </style>
 </head>
@@ -133,77 +136,90 @@ button:active {
 
 <div class="container">
 
-  <div class="rose">🌹</div>
-
+  <div class="rose" id="rose">🌹</div>
   <h1>Happy Rose Day dumbo 💗</h1>
 
   <div class="subtitle">
     I love you.  
     I miss you.  
-    This rose is for you.
+    I just wanted you to feel that.
   </div>
 
-  <button id="mainBtn">Tap here dumbo</button>
+  <button id="btn">Tap here</button>
 
-  <div class="card" id="card1">
+  <div class="thought" id="t1">
+    (this page exists only for you)
+  </div>
+
+  <div class="section" id="s1">
     <p>
-      I love you jaanu.  
-      I love your pretty smile.  
-      With you everything feels okay.
+      Even on normal days,<br>
+      you make things feel softer.
     </p>
   </div>
 
-  <div class="card" id="card2">
+  <div class="section" id="s2">
+    <p>
+      I love you jaanu.<br>
+      I love your pretty smile.<br>
+      With you, everything feels okay.
+    </p>
+  </div>
+
+  <div class="section" id="s3">
     <p>
       You make my life worth living 💖
     </p>
   </div>
 
-  <div class="end" id="endText">
-    always yours 🌸
+  <div class="end" id="end">
+    you’re always on my mind 🌸
   </div>
 
 </div>
 
 <script>
-/* ===== BUTTON INTERACTION ===== */
 let step = 0;
-const btn = document.getElementById('mainBtn');
-const card1 = document.getElementById('card1');
-const card2 = document.getElementById('card2');
-const endText = document.getElementById('endText');
+const btn = document.getElementById("btn");
+const s1 = document.getElementById("s1");
+const s2 = document.getElementById("s2");
+const s3 = document.getElementById("s3");
+const end = document.getElementById("end");
 
-btn.addEventListener('click', () => {
+btn.addEventListener("click", () => {
   step++;
 
   if (step === 1) {
-    card1.style.display = 'block';
-    btn.innerText = 'Tap again 👀';
-  } 
-  else if (step === 2) {
-    card2.style.display = 'block';
-    btn.innerText = 'One last thing 💗';
-  } 
-  else {
-    btn.style.display = 'none';
-    endText.style.opacity = '1';
+    s1.style.display = "block";
+    btn.innerText = "Tap again";
+  } else if (step === 2) {
+    s2.style.display = "block";
+    btn.innerText = "Keep going";
+  } else if (step === 3) {
+    s3.style.display = "block";
+    btn.innerText = "One last thing";
+  } else {
+    btn.style.display = "none";
+    end.style.opacity = "1";
   }
 });
 
-/* ===== FLOATING HEARTS ===== */
-const hearts = ['💗','💖','💕','💞'];
-setInterval(() => {
-  const h = document.createElement('div');
-  h.className = 'heart';
-  h.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-  h.style.left = Math.random() * 100 + 'vw';
-  h.style.animationDuration = (8 + Math.random() * 6) + 's';
-  document.body.appendChild(h);
+/* Rose Easter Egg */
+document.getElementById("rose").addEventListener("click", () => {
+  alert("this rose is yours 🌹");
+});
 
-  setTimeout(() => {
-    h.remove();
-  }, 12000);
-}, 900);
+/* Ambient floating elements */
+const floats = ["💗","💕","💖","🌸"];
+setInterval(() => {
+  const f = document.createElement("div");
+  f.className = "float";
+  f.innerText = floats[Math.floor(Math.random() * floats.length)];
+  f.style.left = Math.random() * 100 + "vw";
+  f.style.animationDuration = (10 + Math.random() * 6) + "s";
+  document.body.appendChild(f);
+  setTimeout(() => f.remove(), 16000);
+}, 1200);
 </script>
 
 </body>
