@@ -1,149 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Happy Rose Day 🌹</title>
 
 <style>
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(135deg, #fff0f5, #ffe4ec);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', system-ui, sans-serif;
+  background: linear-gradient(180deg, #fff1f4, #ffe4ea);
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
   color: #c94a6a;
+  overflow-x: hidden;
 }
 
+/* ===== CONTAINER ===== */
 .container {
-  padding: 28px 22px;
-  max-width: 360px;
+  width: 100%;
+  max-width: 420px;
+  padding: 28px 22px 40px;
+  text-align: center;
+  position: relative;
 }
 
+/* ===== FLOATING HEARTS ===== */
+.heart {
+  position: fixed;
+  font-size: 18px;
+  animation: floatUp 10s linear infinite;
+  opacity: 0.35;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-120px); }
+}
+
+/* ===== HERO ===== */
 .rose {
   font-size: 64px;
-  animation: float 3s ease-in-out infinite;
+  animation: gentleFloat 3s ease-in-out infinite;
 }
 
-@keyframes float {
-  0%,100% { transform: translateY(0); }
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
 
 h1 {
   font-size: 2rem;
-  margin: 16px 0 12px;
+  margin: 14px 0 8px;
 }
 
-p {
+.subtitle {
   font-size: 1.05rem;
-  line-height: 1.7;
-  margin: 10px 0;
+  line-height: 1.6;
+  margin-bottom: 22px;
 }
 
+/* ===== BUTTON ===== */
 button {
-  margin-top: 22px;
-  padding: 14px 28px;
   border: none;
-  border-radius: 999px;
-  background: #ff7fa1;
+  background: #ff6f91;
   color: white;
+  padding: 14px 28px;
+  border-radius: 999px;
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 10px 25px rgba(255,127,161,0.35);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  box-shadow: 0 12px 30px rgba(255, 111, 145, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:active {
   transform: scale(0.94);
+  box-shadow: 0 6px 18px rgba(255, 111, 145, 0.35);
 }
 
-button:hover {
-  background: #ff5f8f;
-  box-shadow: 0 14px 30px rgba(255,95,143,0.45);
-}
-
+/* ===== CARDS ===== */
 .card {
-  display: none;
   background: white;
+  border-radius: 24px;
+  padding: 26px 22px;
   margin-top: 26px;
-  padding: 22px;
-  border-radius: 22px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  display: none;
   animation: fadeUp 0.6s ease forwards;
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.hearts {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-}
-
-.heart {
-  position: absolute;
-  font-size: 18px;
-  animation: rise 4s linear infinite;
-  opacity: 0.8;
-}
-
-@keyframes rise {
   from {
-    transform: translateY(100vh) scale(0.8);
     opacity: 0;
+    transform: translateY(12px);
   }
   to {
-    transform: translateY(-10vh) scale(1.3);
     opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.card p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ===== FINAL TEXT ===== */
+.end {
+  margin-top: 30px;
+  font-size: 0.95rem;
+  opacity: 0.7;
+}
+
+/* ===== SMALL SCREEN TWEAK ===== */
+@media (max-width: 360px) {
+  h1 { font-size: 1.8rem; }
+  .subtitle { font-size: 1rem; }
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
+
   <div class="rose">🌹</div>
-  <h1>Happy Rose Day dumbo 🐘</h1>
 
-  <p>
-    I know this rose isn’t in my hands right now,<br>
-    but it’s still meant only for you 💕
-  </p>
+  <h1>Happy Rose Day dumbo 💗</h1>
 
-  <button onclick="reveal()">Tap here dumbo 💗</button>
+  <div class="subtitle">
+    I love you.  
+    I miss you.  
+    This rose is for you.
+  </div>
 
-  <div class="card" id="message">
+  <button id="mainBtn">Tap here dumbo</button>
+
+  <div class="card" id="card1">
     <p>
-      I love you jaanu.<br>
-      I love your pretty smile.<br>
-      With you everything feels okay.<br><br>
+      I love you jaanu.  
+      I love your pretty smile.  
+      With you everything feels okay.
+    </p>
+  </div>
+
+  <div class="card" id="card2">
+    <p>
       You make my life worth living 💖
     </p>
   </div>
+
+  <div class="end" id="endText">
+    always yours 🌸
+  </div>
+
 </div>
 
-<div class="hearts" id="hearts"></div>
-
 <script>
-function reveal() {
-  document.getElementById('message').style.display = 'block';
-  for (let i = 0; i < 18; i++) {
-    const heart = document.createElement('div');
-    heart.className = 'heart';
-    heart.innerHTML = '💗';
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDelay = Math.random() * 2 + 's';
-    document.getElementById('hearts').appendChild(heart);
-    setTimeout(() => heart.remove(), 4000);
+/* ===== BUTTON INTERACTION ===== */
+let step = 0;
+const btn = document.getElementById('mainBtn');
+const card1 = document.getElementById('card1');
+const card2 = document.getElementById('card2');
+const endText = document.getElementById('endText');
+
+btn.addEventListener('click', () => {
+  step++;
+
+  if (step === 1) {
+    card1.style.display = 'block';
+    btn.innerText = 'Tap again 👀';
+  } 
+  else if (step === 2) {
+    card2.style.display = 'block';
+    btn.innerText = 'One last thing 💗';
+  } 
+  else {
+    btn.style.display = 'none';
+    endText.style.opacity = '1';
   }
-}
+});
+
+/* ===== FLOATING HEARTS ===== */
+const hearts = ['💗','💖','💕','💞'];
+setInterval(() => {
+  const h = document.createElement('div');
+  h.className = 'heart';
+  h.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+  h.style.left = Math.random() * 100 + 'vw';
+  h.style.animationDuration = (8 + Math.random() * 6) + 's';
+  document.body.appendChild(h);
+
+  setTimeout(() => {
+    h.remove();
+  }, 12000);
+}, 900);
 </script>
+
 </body>
 </html>
