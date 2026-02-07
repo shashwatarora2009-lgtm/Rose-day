@@ -6,102 +6,110 @@
 <title>Happy Rose Day 🌹</title>
 
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #ffe9f1, #fff7fb);
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    color: #c94a73;
-    overflow-x: hidden;
-  }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #c94a6a;
+}
 
-  .container {
-    padding: 45px 22px;
-  }
+.container {
+  padding: 28px 22px;
+  max-width: 360px;
+}
 
-  h1 {
-    font-size: 2.2rem;
-    margin-bottom: 12px;
-  }
+.rose {
+  font-size: 64px;
+  animation: float 3s ease-in-out infinite;
+}
 
-  p {
-    font-size: 1.1rem;
-    line-height: 1.65;
-    margin: 0;
-  }
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
 
-  .button {
-    margin-top: 28px;
-    padding: 14px 26px;
-    background: #ff9dbb;
-    color: white;
-    border: none;
-    border-radius: 40px;
-    font-size: 1rem;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(255,157,187,0.4);
-  }
+h1 {
+  font-size: 2rem;
+  margin: 16px 0 12px;
+}
 
-  .button:hover {
-    background: #ff85a9;
-  }
+p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 10px 0;
+}
 
-  .card {
-    display: none;
-    background: white;
-    margin-top: 35px;
-    padding: 26px;
-    border-radius: 24px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-    animation: pop 0.5s ease;
-  }
+button {
+  margin-top: 22px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 999px;
+  background: #ff7fa1;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(255,127,161,0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
 
-  @keyframes pop {
-    0% { transform: scale(0.92); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-  }
+button:active {
+  transform: scale(0.94);
+}
 
-  .rose {
-    font-size: 52px;
-    margin-bottom: 10px;
-    animation: float 2.2s infinite ease-in-out;
-  }
+button:hover {
+  background: #ff5f8f;
+  box-shadow: 0 14px 30px rgba(255,95,143,0.45);
+}
 
-  @keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-    100% { transform: translateY(0); }
-  }
+.card {
+  display: none;
+  background: white;
+  margin-top: 26px;
+  padding: 22px;
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  animation: fadeUp 0.6s ease forwards;
+}
 
-  /* Floating hearts */
-  .heart {
-    position: fixed;
-    bottom: -20px;
-    font-size: 20px;
-    animation: rise 8s linear infinite;
-    opacity: 0.6;
-  }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-  @keyframes rise {
-    0% {
-      transform: translateY(0) translateX(0);
-      opacity: 0;
-    }
-    10% { opacity: 0.6; }
-    100% {
-      transform: translateY(-110vh) translateX(40px);
-      opacity: 0;
-    }
+.hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  font-size: 18px;
+  animation: rise 4s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(100vh) scale(0.8);
+    opacity: 0;
   }
+  to {
+    transform: translateY(-10vh) scale(1.3);
+    opacity: 1;
+  }
+}
 </style>
 </head>
 
 <body>
-
 <div class="container">
   <div class="rose">🌹</div>
-
   <h1>Happy Rose Day dumbo 🐘</h1>
 
   <p>
@@ -109,68 +117,33 @@
     but it’s still meant only for you 💕
   </p>
 
-  <button class="button" onclick="showFirst()">Tap here dumbo 🌸</button>
+  <button onclick="reveal()">Tap here dumbo 💗</button>
 
-  <div id="first" class="card">
+  <div class="card" id="message">
     <p>
-      I love you bhondu 💖<br><br>
-      I really love your pretty smile —<br>
-      the one that makes everything feel okay,<br>
-      even when you’re not here.
+      I love you jaanu.<br>
+      I love your pretty smile.<br>
+      With you everything feels okay.<br><br>
+      You make my life worth living 💖
     </p>
-
-    <button class="button" onclick="showSecond()">Wait… one more thing 👀</button>
-  </div>
-
-  <div id="second" class="card">
-    <p>
-      It’s been 14 months of us 💫<br>
-      and this is our second Rose Day together 🌹<br><br>
-      Even if you’ve gone away for a bit,<br>
-      nothing about us feels distant to me.
-    </p>
-
-    <button class="button" onclick="showThird()">Okay last one 🥹</button>
-  </div>
-
-  <div id="third" class="card">
-    <p>
-      You will always be my sweet little girl 🌷<br><br>
-      I miss you.<br>
-      And I can’t wait to see you again very soon 💕
-    </p>
-
-    <div class="rose">🌹🌹🌹</div>
   </div>
 </div>
 
+<div class="hearts" id="hearts"></div>
+
 <script>
-  function showFirst() {
-    document.getElementById("first").style.display = "block";
+function reveal() {
+  document.getElementById('message').style.display = 'block';
+  for (let i = 0; i < 18; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = '💗';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDelay = Math.random() * 2 + 's';
+    document.getElementById('hearts').appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
   }
-
-  function showSecond() {
-    document.getElementById("second").style.display = "block";
-  }
-
-  function showThird() {
-    document.getElementById("third").style.display = "block";
-  }
-
-  // Floating hearts generator
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "💗";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (6 + Math.random() * 4) + "s";
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-      heart.remove();
-    }, 9000);
-  }, 600);
+}
 </script>
-
 </body>
 </html>
